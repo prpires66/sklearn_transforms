@@ -1,8 +1,6 @@
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
-from sklearn.impute import SimpleImputer
-
 
 # All sklearn Transforms must have the `transform` and `fit` methods
 class DropColumns(BaseEstimator, TransformerMixin):
@@ -26,8 +24,7 @@ class SimpleOne(BaseEstimator):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
 
-        si = SimpleImputer(missing_values=np.nan,strategy='constant',fill_value=1,verbose=0,copy=True)
-        data[['INGLES']] = si.fit_transform(X=data[['INGLES']])
+        data['INGLES'].fillna(1),inplace=True)
         return data
 
 class SimpleTwo(BaseEstimator):
