@@ -16,17 +16,6 @@ class DropColumns(BaseEstimator, TransformerMixin):
         # Retornamos um novo dataframe sem as colunas indesejadas
         return data.drop(labels=self.columns, axis='columns')
 
-class Simple_One(BaseEstimator):
-    def fit(self, X, y=None):
-        return self
-    
-    def transform(self, X):
-        # Primeiro realizamos a cópia do dataframe 'X' de entrada
-        data = X.copy()
-
-        data['INGLES'].fillna(1,inplace=True)
-        return data
-
 class Simple_Two(BaseEstimator):
     def fit(self, X, y=None):
         return self
@@ -36,6 +25,7 @@ class Simple_Two(BaseEstimator):
         data = X.copy()
    
         data['NOTA_GO'].fillna((data['NOTA_DE']+data['NOTA_EM']+data['NOTA_MF'])/3,inplace=True)
+        data['INGLES'].fillna(1,inplace=True)
         return data
 
 class LabelTrans (BaseEstimator):
