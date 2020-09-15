@@ -16,7 +16,7 @@ class DropColumns(BaseEstimator, TransformerMixin):
         # Retornamos um novo dataframe sem as colunas indesejadas
         return data.drop(labels=self.columns, axis='columns')
 
-class SimpleOne(BaseEstimator):
+class Simple_One(BaseEstimator):
     def fit(self, X, y=None):
         return self
     
@@ -27,7 +27,7 @@ class SimpleOne(BaseEstimator):
         data['INGLES'].fillna(1,inplace=True)
         return data
 
-class SimpleTwo(BaseEstimator):
+class Simple_Two(BaseEstimator):
     def fit(self, X, y=None):
         return self
     
