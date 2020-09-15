@@ -24,7 +24,7 @@ class SimpleOne(BaseEstimator):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
 
-        data['INGLES'].fillna(1),inplace=True)
+        data['INGLES'].fillna(1,inplace=True)
         return data
 
 class SimpleTwo(BaseEstimator):
