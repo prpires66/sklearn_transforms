@@ -26,11 +26,7 @@ class SimpleOne(BaseEstimator):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
 
-        si = SimpleImputer(missing_values=np.nan,
-                           strategy='constant',
-                           fill_value=1,verbose=0,
-                           copy=True
-                           )
+        si = SimpleImputer(missing_values=np.nan,strategy='constant',fill_value=1,verbose=0,copy=True)
         data[['INGLES']] = si.fit_transform(X=data[['INGLES']])
         return data
 
