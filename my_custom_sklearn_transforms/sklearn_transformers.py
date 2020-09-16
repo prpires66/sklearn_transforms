@@ -19,6 +19,9 @@ class DropColumns(BaseEstimator, TransformerMixin):
         return data.drop(labels=self.columns, axis='columns')
 
 class Simple_Two(BaseEstimator):
+    def __init__(self, columns):
+        self.columns = columns
+
     def fit(self, X, y=None):
         return self
     
@@ -31,6 +34,9 @@ class Simple_Two(BaseEstimator):
         return data
 
 class LabelTrans(BaseEstimator):
+    def __init__(self, columns):
+        self.columns = columns
+
     def fit(self, X, y=None):
         return self
     
@@ -44,6 +50,8 @@ class LabelTrans(BaseEstimator):
         return data
 
 class StdScaler(BaseEstimator):
+    def __init__(self, columns):
+        self.columns = columns
 
     def fit(self, X, y=None):
         return self
