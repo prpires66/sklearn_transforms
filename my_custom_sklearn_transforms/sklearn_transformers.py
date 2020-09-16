@@ -2,6 +2,7 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn import preprocessing
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import LabelEncoder
 
 # All sklearn Transforms must have the `transform` and `fit` methods
 class DropColumns(BaseEstimator, TransformerMixin):
@@ -42,9 +43,7 @@ class LabelTrans(BaseEstimator):
     def transform(self, X):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
-   
-        # Import LabelEncoder
-        from sklearn.preprocessing import LabelEncoder
+
         # Create a boolean mask for categorical columns
         categorical_mask = (data.dtypes == object)
         # Get list of categorical column names
