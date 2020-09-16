@@ -48,8 +48,6 @@ class LabelTrans(BaseEstimator):
         data['PERFIL'] = data[['PERFIL']]
         enc.fit(data[['PERFIL']])
         data['PERFIL']=enc.transform(data[['PERFIL']])
-        
-        (data['PERFIL'])
         return data
 
 class StdScaler(BaseEstimator):
