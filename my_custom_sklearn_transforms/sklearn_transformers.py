@@ -43,11 +43,19 @@ class LabelTrans(BaseEstimator):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
    
-        enc = preprocessing.OrdinalEncoder()
-
-        data['PERFIL'] = data[['PERFIL']]
-        enc.fit(data[['PERFIL']])
-        data['PERFIL']=enc.transform(data[['PERFIL']])
+        # Import LabelEncoder
+        from sklearn.preprocessing import LabelEncoder
+        # Create a boolean mask for categorical columns
+        categorical_mask = (data.dtypes == object)
+        # Get list of categorical column names
+        categorical_columns = data.columns[categorical_mask].tolist()
+        # Print the head of the categorical columns
+        print(data[categorical_columns].head())
+        # Create LabelEncoder object: le
+        le = LabelEncoder()
+        # Apply LabelEncoder to categorical columns
+        data[categorical_columns] = data[categorical_columns].apply(lambda x: le.fit_transform(x))
+        # Print the head of the LabelEncoded categorical columns
         return data
 
 class StdScaler(BaseEstimator):
