@@ -1,6 +1,5 @@
 from sklearn.base import BaseEstimator, TransformerMixin
-from sklearn.preprocessing import LabelEncoder
-from sklearn.preprocessing import StandardScaler
+from sklearn import preprocessing
 import pandas as pd
 import numpy as np
 
@@ -44,9 +43,13 @@ class LabelTrans(BaseEstimator):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
    
-        le = LabelEncoder()
-        # aplicar le em colunas de características categóricas 
-        data['PERFIL'] = le.fit_transform(data['PERFIL'])
+        enc = preprocessing.OrdinalEncoder()
+
+        data['PERFIL'] = data[['PERFIL']]
+        enc.fit(data[['PERFIL']])
+        data['PERFIL']=enc.transform(data[['PERFIL']])
+        
+        (data['PERFIL'])
         return data
 
 class StdScaler(BaseEstimator):
